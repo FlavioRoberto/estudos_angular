@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Transform } from 'stream';
+
 import { IPhoto } from '../photo/IPhoto';
 
 @Pipe({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { IPhoto } from '../photo/IPhoto';
 
 @Component({
@@ -11,11 +12,15 @@ import { IPhoto } from '../photo/IPhoto';
 export class PhotoListComponent implements OnInit {
   photos: IPhoto[];
   filter = '';
+  debounce: Subject<string> = new Subject<string>();
 
   constructor(private activetedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     //captura os dados carregados pelo resolver
     this.photos = this.activetedRoute.snapshot.data.photos;
+    this.debounce.pipe(debounceTime(300)).subscribe(filter => {
+      this.filter = filter;
+    });
   }
 }
