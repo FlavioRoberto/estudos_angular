@@ -6,11 +6,6 @@ import { PhotoListModule } from './photo-list/photo-list.module';
 import { PhotoModule } from './photo/photo.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    PhotoModule,
-    PhotoListModule,
-    PhotoFormModule
-  ]
+  imports: [CommonModule, PhotoModule, PhotoListModule, PhotoFormModule]
 })
 export class PhotosModule {}
