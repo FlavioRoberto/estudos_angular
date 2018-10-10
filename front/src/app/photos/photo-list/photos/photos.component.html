@@ -1,8 +1,8 @@
 <p *ngIf="!photos.length" class="text-center text-muted">Sorry, no photos.</p>
 
-<ol class="list-unstyled row ml-2 mr-2">
+<ol class="list-unstyled row ml-2 mr-2" >
   <li *ngFor="let col of rows" class="row no-gutters">
-    <div class="col-4" *ngFor="let photo of col">
+    <div class="col-4" *ngFor="let photo of col" apDarkenOnHover>
       <ap-card [title]='photo.description'>
         <app-photo [url]="photo.url" [description]="photo.description">
           </app-photo>
