@@ -1,24 +1,36 @@
 <h4 class="text-center">Login</h4>
 
-<form [formGroup]="loginForm" class="form mt-4">
+<form [formGroup]="loginForm"
+      (submit)="login()"
+      class="form mt-4">
 
-  <div formControlName="userName" class="form-group" ngDefaultControl>
-    <input class="form-control" placeholder="user name" autofocus>
-    <ap-vmessage
-        *ngIf="loginForm.get('userName').errors?.required"
-        message="username is required">
-    </ap-vmessage>
-  </div>
+    <div formControlName="userName"
+         class="form-group"
+         ngDefaultControl>
+        <input class="form-control"
+               placeholder="user name"
+               autofocus>
+        <ap-vmessage *ngIf="loginForm.get('userName').errors?.required"
+                     message="username is required">
+        </ap-vmessage>
+    </div>
 
-  <div formControlName="password" class="form-group" ngDefaultControl>
-    <input type="password" class="form-control" placeholder="password">
-    <ap-vmessage *ngIf="loginForm.get('password').errors?.required" message="password is required">
-    </ap-vmessage>
-  </div>
+    <div formControlName="password"
+         class="form-group"
+         ngDefaultControl>
+        <input type="password"
+               class="form-control"
+               placeholder="password">
+        <ap-vmessage *ngIf="loginForm.get('password').errors?.required"
+                     message="password is required">
+        </ap-vmessage>
+    </div>
 
-  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">
-    login
-  </button>
+    <button [disabled]="loginForm.invalid"
+            type="submit"
+            class="btn btn-primary btn-block">
+        login
+    </button>
 
 </form>
 
