@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../core/auth/auth.service';
 import { Router, Route } from '@angular/router';
@@ -9,7 +9,8 @@ import { Router, Route } from '@angular/router';
 })
 
 export class SigninComponent implements OnInit {
-    private loginForm: FormGroup;
+    loginForm: FormGroup;
+    @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
 
     constructor(private formBuilder: FormBuilder,
         private authService: AuthService,
@@ -27,11 +28,12 @@ export class SigninComponent implements OnInit {
         const password = this.loginForm.get('password').value;
         this.authService.authenticate(userName, password)
             .subscribe(() => {
-                this.router.navigate(['user',userName]);
+                this.router.navigate(['user', userName]);
             },
                 error => {
                     console.log(error)
                     this.loginForm.reset();
+                    this.userNameInput.nativeElement.focus();
                 });
     }
 }
