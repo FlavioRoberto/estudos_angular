@@ -5,12 +5,16 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { VmessageModule } from '../shared/components/vmessage/vmessage.module';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-    imports: [CommonModule,
-        ReactiveFormsModule,
-        VmessageModule,
-        RouterModule],
-    declarations: [SigninComponent]
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    ReactiveFormsModule,
+    VmessageModule,
+    RouterModule
+  ],
+  declarations: [SigninComponent]
 })
-export class HomeModule { }
+export class HomeModule {}

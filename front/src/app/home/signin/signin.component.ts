@@ -33,7 +33,7 @@ export class SigninComponent implements OnInit {
                 this.router.navigate(['user', userName]);
             },
                 error => {
-                    console.log(error)
+                    console.log(error);
                     this.loginForm.reset();
 
                     this.platformDetectorService.isPlatformBrowser() &&

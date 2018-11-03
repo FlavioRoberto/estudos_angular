@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TokenService } from '../token/token.service';
 import { Subject } from 'rxjs';
 import { IUser } from './user.interface';
-import * as jwt_decode from 'jwt-decode';]
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class UserService {
 
   constructor(private tokenService: TokenService) {
     if (this.tokenService.hasToken()) {
-        this.decodeAndNotify();
+      this.decodeAndNotify();
     }
   }
 
@@ -21,11 +21,18 @@ export class UserService {
     this.decodeAndNotify();
   }
 
-  getUser() {}
+  getUser() {
+    //as observable permite o subscribe
+    return this.userSubject.asObservable();
+  }
 
-  private decodeAndNotify(){
+  private decodeAndNotify() {
     const token = this.tokenService.getToken();
-    const user = jwt_decode.decode(token) as IUser;
-    this.userSubject.next(user);
+    try {
+      const user = jwt_decode.decode(token) as IUser;
+      this.userSubject.next(user);
+    } catch (e) {
+      console.log((<Error>e).message);
+    }
   }
 }

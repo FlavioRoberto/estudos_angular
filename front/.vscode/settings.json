@@ -1,5 +1,8 @@
 {
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
-    "prettier.singleQuote": true
+    "prettier.singleQuote": true,
+    "markdown.preview.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "editor.fontSize": 13
 }
