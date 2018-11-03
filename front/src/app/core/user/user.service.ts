@@ -4,7 +4,6 @@ import { Subject, BehaviorSubject } from 'rxjs';
 import { IUser } from './user.interface';
 import { JwtHelper } from 'angular2-jwt';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +25,11 @@ export class UserService {
   getUser() {
     //as observable permite o subscribe
     return this.userSubject.asObservable();
+  }
+
+  logout() {
+    this.tokenService.removeToken();
+    this.userSubject.next(null);
   }
 
   private decodeAndNotify() {
