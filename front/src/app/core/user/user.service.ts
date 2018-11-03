@@ -9,10 +9,12 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class UserService {
   private userSubject = new BehaviorSubject<IUser>(null);
+  private userName: string;
   jwtHelper: JwtHelper = new JwtHelper();
 
   constructor(private tokenService: TokenService) {
     if (this.tokenService.hasToken()) {
+      console.log('entrou');
       this.decodeAndNotify();
     }
   }
@@ -32,10 +34,19 @@ export class UserService {
     this.userSubject.next(null);
   }
 
+  isLogged() {
+    return this.tokenService.hasToken();
+  }
+
+  getUserName() {
+    return this.userName;
+  }
+
   private decodeAndNotify() {
     const token = this.tokenService.getToken();
     try {
       const user = this.jwtHelper.decodeToken(token) as IUser;
+      this.userName = user.name;
       this.userSubject.next(user);
     } catch (e) {
       console.log((<Error>e).message);
