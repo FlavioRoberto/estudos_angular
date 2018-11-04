@@ -23,6 +23,7 @@
     </ap-vmessage>
     <ap-vmessage *ngIf="signupForm.get('fullName').errors?.maxlength" message="Maximun length is 40">
     </ap-vmessage>
+
     <!-- VALIDARS MESSAGE -->
   </div>
   <!-- FULL NAME -->
@@ -39,6 +40,9 @@
     </ap-vmessage>
     <ap-vmessage *ngIf="signupForm.get('userName').errors?.lowercase" message="Must be lowercase">
     </ap-vmessage>
+    <ap-vmessage *ngIf="signupForm.get('userName').errors?.userNameTaken" message="Username already taken">
+    </ap-vmessage>
+    <small *ngIf="signupForm.get('userName').valid" class="text-success">User availble</small>
     <!-- VALIDATORs MESSAGES-->
   </div>
   <!-- USER NAME -->
@@ -51,7 +55,7 @@
     </ap-vmessage>
     <!-- VALIDATORS MESSAGE -->
   </div>
-  <button class="btn btn-primary btn-block">Register</button>
+  <button [disabled]="signupForm.invalid || signupForm.pending" class="btn btn-primary btn-block">Register</button>
   <!-- PASSWORD -->
 
   <p>Already a user?
