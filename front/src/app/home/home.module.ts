@@ -9,6 +9,7 @@ import { VmessageModule } from '../shared/components/vmessage/vmessage.module';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home.component';
 import { HomeRountingModule } from './home.rounting.module';
+import { SignUpService } from './signup/signup.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { HomeRountingModule } from './home.rounting.module';
     RouterModule,
     HomeRountingModule
   ],
-  declarations: [SigninComponent, SignupComponent, HomeComponent]
+  declarations: [SigninComponent, SignupComponent, HomeComponent],
+  providers: [SignUpService]
 })
 export class HomeModule {}
