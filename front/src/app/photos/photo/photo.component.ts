@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 const CLOUD = 'http://localhost:3003/imgs/';
 
 @Component({
-  selector: 'app-photo',
+  selector: 'ap-photo',
   templateUrl: './photo.component.html',
   styleUrls: ['./photo.component.css']
 })
