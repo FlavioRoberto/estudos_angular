@@ -11,6 +11,7 @@
         </button>
         <input
           #fileInput
+          apImmediateClick
           hidden
           (change)="handleFile($event.target.files[0])"
           formControlName="file"
